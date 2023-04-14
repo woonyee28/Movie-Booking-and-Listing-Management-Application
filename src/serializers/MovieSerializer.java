@@ -8,6 +8,11 @@ import models.Movie;
 public class MovieSerializer implements InterfaceSerializer<Movie>{
 
     private static final String CSV_SEPARATOR = ",";
+    
+    /** 
+     * write movie into csv
+     * @param movie
+     */
     @Override
     public void writeToCSV(Movie movie)
     {
@@ -46,6 +51,11 @@ public class MovieSerializer implements InterfaceSerializer<Movie>{
         catch (FileNotFoundException e){System.out.printf("'%s' %n", "File Not Found"); }
         catch (IOException e){e.printStackTrace();}
     }
+    
+    /** 
+     * read movie from csv
+     * @return ArrayList<Movie>
+     */
     @Override
     public ArrayList<Movie> readFromCSV()
     {
@@ -89,6 +99,11 @@ public class MovieSerializer implements InterfaceSerializer<Movie>{
         }
         return null;
     }
+    
+    /** 
+     * overwrite movie csv
+     * @param aList
+     */
     @Override
     public void overwriteCSV(ArrayList<Movie> aList) {
 		try {
@@ -128,6 +143,11 @@ public class MovieSerializer implements InterfaceSerializer<Movie>{
         catch (IOException e){e.printStackTrace();}
 	
     }
+    
+    /** 
+     * update movie in csv
+     * @param m
+     */
     @Override
     public void updateFromCSV(Movie m) {
 	    MovieSerializer ms = new MovieSerializer();
@@ -152,6 +172,11 @@ public class MovieSerializer implements InterfaceSerializer<Movie>{
 	        System.out.println("Movie record, title = " +m.getTitle()+" successfully updated!");
 	    } else System.out.println("Movie record, title = " +m.getTitle()+" update unsuccessful!");
     }
+    
+    /** 
+     * delete movie in csv
+     * @param m
+     */
     @Override
     public void deleteFromCSV(Movie m) {
 	    MovieSerializer ms = new MovieSerializer();

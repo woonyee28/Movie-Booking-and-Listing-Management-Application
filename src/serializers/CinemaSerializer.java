@@ -4,10 +4,18 @@ import java.io.*;
 import java.util.ArrayList;
 
 import models.Cinemas;
+import models.GoldCinema;
+import models.PlatinumCinema;
+import models.RegularCinema;
 
 public class CinemaSerializer implements InterfaceSerializer<Cinemas>{
     private static final String CSV_SEPARATOR = ",";
 
+    
+    /** 
+     * write cinema class to csv
+     * @param cinema
+     */
     @Override
     public void writeToCSV(Cinemas cinema)
     {
@@ -36,6 +44,11 @@ public class CinemaSerializer implements InterfaceSerializer<Cinemas>{
         catch (FileNotFoundException e){System.out.printf("'%s' %n", "File Not Found"); }
         catch (IOException e){e.printStackTrace();}
     }
+    
+    /** 
+     * read cinema from csv
+     * @return ArrayList<Cinemas>
+     */
     @Override
     public ArrayList<Cinemas> readFromCSV()
     {
@@ -62,7 +75,21 @@ public class CinemaSerializer implements InterfaceSerializer<Cinemas>{
                for (String s: tempCast) {           
                 sessionsID.add(s);
                }
-               Cinemas m = new Cinemas(cinemaCode,cinemaClass,seatingPlan,sessionsID);
+               Cinemas m = new RegularCinema(cinemaCode,seatingPlan,sessionsID,cinemaClass);
+               switch (cinemaClass){
+                    case "Regular":
+                        m = new RegularCinema(cinemaCode,seatingPlan,sessionsID,cinemaClass);
+                        break;
+                    case "Gold":
+                        m = new GoldCinema(cinemaCode,seatingPlan,sessionsID,cinemaClass);
+                        break;
+                    case "Platinum":
+                        m = new PlatinumCinema(cinemaCode,seatingPlan,sessionsID,cinemaClass);
+                        break;
+                    default:
+                        System.out.println("CinemaSerializer Line 83 Error!");
+                        break;
+               }
                cinemaList.add(m);
                
             }
@@ -74,6 +101,11 @@ public class CinemaSerializer implements InterfaceSerializer<Cinemas>{
         }
         return null;
     }
+    
+    /** 
+     * overwrite the csv
+     * @param aList
+     */
     @Override
     public void overwriteCSV(ArrayList<Cinemas> aList) {
 		try {
@@ -104,6 +136,11 @@ public class CinemaSerializer implements InterfaceSerializer<Cinemas>{
         catch (IOException e){e.printStackTrace();}
 	
     }
+    
+    /** 
+     * update the cinema in csv
+     * @param m
+     */
     @Override
     public void updateFromCSV(Cinemas m) {
 	    CinemaSerializer cs = new CinemaSerializer();
@@ -123,6 +160,11 @@ public class CinemaSerializer implements InterfaceSerializer<Cinemas>{
 	        System.out.println("Cinema record, cinemaCode = " +m.getCinemaCode()+" successfully updated!");
 	    } else System.out.println("Cinema record, cinemaCode = " +m.getCinemaCode()+" update unsuccessful!");
     }
+    
+    /** 
+     * delete the cinema in csv
+     * @param m
+     */
     @Override
     public void deleteFromCSV(Cinemas m) {
         CinemaSerializer cs = new CinemaSerializer();

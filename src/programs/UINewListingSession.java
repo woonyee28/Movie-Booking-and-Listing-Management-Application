@@ -6,12 +6,20 @@ import managers.MovieManager;
 import managers.SessionManager;
 
 public class UINewListingSession {
+    /**
+     * The adminID of this UINewListingSession.
+     */
     private int adminID;
-
+    /**
+     * Creates a new UINewListingSession with given adminID. 
+     * @param adminID This UINewListingSession's adminID.
+     */
     public UINewListingSession(int adminID){
         this.adminID = adminID;
     }
-    
+    /**
+     * THe menuOptions of this UIListingSession.
+     */
     private final String menuOptions[] = {
         "Print All Movies",
         "Print All Sessions",
@@ -19,9 +27,13 @@ public class UINewListingSession {
         "Create New Session",
         "Modify Movie Detail",
         "Modify Session Detail",
+        "Delete Session",
+        "Delete Movie",
         "Exit New Listing Session"
     };
-
+    /**
+     * Runs UINewListingSession.
+     */
     public void run(){
         int choice = -1;
 
@@ -62,13 +74,21 @@ public class UINewListingSession {
                     sm.modifySession();
                     break;
                 case 7:
+                    System.out.println("deleteSession()");
+                    sm.deleteSession();
+                    break;
+                case 8:
+                    System.out.println("deleteMovie()");
+                    mm.deleteMovie();
+                    break;
+                case 9:
                     System.out.println("Program exiting...");
                     break;
 				default:
 					System.out.println("Please input a valid option.");
 					break;
 			}
-        }while (choice != 7);
+        }while (choice != 9);
         ;
     }
 }

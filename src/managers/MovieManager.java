@@ -5,19 +5,36 @@ import serializers.*;
 import java.util.*;
 
 public class MovieManager {
+    /**
+     * The adminID of this MovieManager.
+     */
     private int adminID;
+    /**
+     * The MovieSerializer o fthis MovieManager.
+     */
     static MovieSerializer ms = new MovieSerializer();
 
+    /**
+     * Creates a new MovieMangager with the given adminID.
+     * @param adminID Thsis MovieManager's adminID.
+     */
     public MovieManager(int adminID){
         this.adminID = adminID;
     }
-
+    /**
+     * Print all movies from database.
+     */
     public void printAllMovies(){
         for (Movie m: ms.readFromCSV()){
             System.out.println(m.toString());
         }
     }
 
+    /**
+     * Creates a new Movie.
+     * Movie with given Title,Type,Synopsis,Rating,ShowingStatus,Director,Casts will be added to database.
+     * MovieID will be automatically generated.(greatest movieID +1).
+     */
     public void createNewMovie(){
         Scanner sc = new Scanner(System.in);
         int movieID=-1;
@@ -30,10 +47,10 @@ public class MovieManager {
         String type = sc.nextLine();
         System.out.println("Enter Synopsis (Without Comma): ");
         String synopsis = sc.nextLine();
-        System.out.println("Enter Rating (2 Decimals): ");
+        System.out.println("Enter Rating (1 Decimals): ");
         Double rating = sc.nextDouble();
         sc.nextLine();
-        System.out.println("Enter Showing Status (No Longer Showing, Now Showing, Coming Soon): ");
+        System.out.println("Enter Showing Status (End of Showing, Now Showing, Preview): ");
         String showingStatus = sc.nextLine();
         System.out.println("Enter Director Name: ");
         String director = sc.nextLine();
@@ -53,7 +70,11 @@ public class MovieManager {
         System.out.println("Movie Recorded!");
         ;
     }
-
+    /**
+     * Modifies an existing Movie.
+     * MovieID is used to identify Movie to be modified.
+     * Title,Type,Synopsis,ShowingStatus,Director and Casts can be changed.
+     */
     public void modifyMovie(){
         Scanner sc = new Scanner(System.in);
         Scanner ii = new Scanner(System.in);
@@ -160,5 +181,44 @@ public class MovieManager {
         ms.updateFromCSV(up);
         ;
         ;
+    }
+    /**
+     * Delete an exising Movie.
+     * MovieID is used to identify movie to be deleted.
+     */
+    public void deleteMovie(){
+        Scanner sc = new Scanner(System.in);
+        Scanner ii = new Scanner(System.in);
+        System.out.println("Which Movie ID would you like to delete? ");
+        int id = ii.nextInt();
+        int movieID=-1;
+        int flag=-1;
+        String title="null"; 
+        String type="null";
+        String synopsis="null";
+        Double rating=0.0;
+        String showingStatus="null";
+        String director="null";
+        ArrayList<String> cast=new ArrayList<String>();
+        ArrayList<Integer> reviewsID = new ArrayList<Integer>();
+        
+        for(Movie m:ms.readFromCSV()){
+            if (m.getMovieID()==id){
+                flag =1;
+                movieID = id;
+                title = m.getTitle();
+                type = m.getType();
+                synopsis = m.getSynopsis();
+                rating = m.getRating();
+                showingStatus = m.getShowingStatus();
+                director = m.getDirector();
+                cast = m.getCasts();
+                reviewsID = m.getReviewsID();
+            }
+        }
+        if (flag==1){
+            Movie delete =  new Movie(movieID, title, type, synopsis, rating, showingStatus, director, cast, reviewsID);
+            ms.deleteFromCSV(delete);
+        } else System.out.println("No such movie found!");
     }
 }

@@ -7,6 +7,11 @@ import models.MovieGoer;
 
 public class MovieGoerSerializer implements InterfaceSerializer<MovieGoer>{
     private static final String CSV_SEPARATOR = ",";
+    
+    /** 
+     * write moviegoer into csv
+     * @param movieGoer
+     */
     @Override
     public void writeToCSV(MovieGoer movieGoer)
     {
@@ -37,6 +42,11 @@ public class MovieGoerSerializer implements InterfaceSerializer<MovieGoer>{
         catch (FileNotFoundException e){System.out.printf("'%s' %n", "File Not Found"); }
         catch (IOException e){e.printStackTrace();}
     }
+    
+    /** 
+     * read moviegoer from csv
+     * @return ArrayList<MovieGoer>
+     */
     @Override
     public ArrayList<MovieGoer> readFromCSV()
     {
@@ -69,6 +79,11 @@ public class MovieGoerSerializer implements InterfaceSerializer<MovieGoer>{
         }
         return null;
     }
+    
+    /** 
+     * overwrite moviegoer csv
+     * @param aList
+     */
     @Override
     public void overwriteCSV(ArrayList<MovieGoer> aList) {
 		try {
@@ -100,6 +115,11 @@ public class MovieGoerSerializer implements InterfaceSerializer<MovieGoer>{
         catch (IOException e){e.printStackTrace();}
 	
     }
+    
+    /** 
+     * upadte moviegoer in the csv
+     * @param m
+     */
     @Override
     public void updateFromCSV(MovieGoer m) {
 	    MovieGoerSerializer mg = new MovieGoerSerializer();
@@ -121,6 +141,11 @@ public class MovieGoerSerializer implements InterfaceSerializer<MovieGoer>{
 	        System.out.println("MovieGoer record, name = " + m.getName() +" successfully updated!");
 	    } else System.out.println("MovieGoer record, name " + m.getName()+" update unsuccessful!");
     }
+    
+    /** 
+     * delete moviegoer from the csv
+     * @param m
+     */
     @Override
     public void deleteFromCSV(MovieGoer m) {
         MovieGoerSerializer mg = new MovieGoerSerializer();

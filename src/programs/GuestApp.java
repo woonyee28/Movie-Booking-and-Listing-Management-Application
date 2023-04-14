@@ -1,10 +1,20 @@
 package programs;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
+
 public class GuestApp {
+	/**
+	 * Creates a new GuestApp.
+	 */
+
     public GuestApp(){};
-    public void run(){
+	/**
+	 * Runs the Guest App
+	 * @throws ParseException
+	 */
+    public void run() throws ParseException{
         int choice = -1;
         Scanner sc = new Scanner(System.in);
 
@@ -18,6 +28,8 @@ public class GuestApp {
             switch (choice) {
 				case 1:
 					// Show movie listing + Book ticket, UIListingAndBooking
+					UIListingAndBooking a = new UIListingAndBooking(-1, -1);
+					a.run();
 					// Zheng Kai
 					break;
 				case 2:

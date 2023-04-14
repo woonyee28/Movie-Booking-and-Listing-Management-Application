@@ -8,6 +8,11 @@ import models.Review;
 public class ReviewSerializer implements InterfaceSerializer<Review>{
     private static final String CSV_SEPARATOR = ",";
 
+    
+    /** 
+     * write review to csv
+     * @param review
+     */
     @Override
     public void writeToCSV(Review review)
     {
@@ -34,6 +39,11 @@ public class ReviewSerializer implements InterfaceSerializer<Review>{
         catch (FileNotFoundException e){System.out.printf("'%s' %n", "File Not Found"); }
         catch (IOException e){e.printStackTrace();}
     }
+    
+    /** 
+     * read review from csv
+     * @return ArrayList<Review>
+     */
     @Override
     public ArrayList<Review> readFromCSV()
     {
@@ -62,6 +72,11 @@ public class ReviewSerializer implements InterfaceSerializer<Review>{
         }
         return null;
     }
+    
+    /** 
+     * overwrite review csv
+     * @param aList
+     */
     @Override
     public void overwriteCSV(ArrayList<Review> aList) {
 		try {
@@ -89,6 +104,11 @@ public class ReviewSerializer implements InterfaceSerializer<Review>{
         catch (IOException e){e.printStackTrace();}
 	
     }
+    
+    /** 
+     * update review in csv
+     * @param r
+     */
     @Override
     public void updateFromCSV(Review r) {
         ReviewSerializer rs = new ReviewSerializer();
@@ -110,6 +130,11 @@ public class ReviewSerializer implements InterfaceSerializer<Review>{
         }
         else System.out.println("Review record, id = "+ r.getReviewsID()+" update unsuccessful!");
     }
+    
+    /** 
+     * delete review in csv
+     * @param r
+     */
     @Override
     public void deleteFromCSV(Review r) {
         ReviewSerializer rs = new ReviewSerializer();

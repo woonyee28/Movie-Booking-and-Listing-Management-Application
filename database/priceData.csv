@@ -1,4 +1,8 @@
-Student,8.00
-Standard,10.00
-SeniorCitizen,7.50
-Special,12.50
+Blockbuster,Student,8.0
+Blockbuster,Standard,10.0
+Blockbuster,SeniorCitizen,7.5
+Blockbuster,Special,12.5
+3D,Student,100.0
+3D,Standard,10.0
+3D,SeniorCitizen,7.5
+3D,Special,12.0

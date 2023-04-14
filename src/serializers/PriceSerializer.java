@@ -7,6 +7,11 @@ import models.Price;
 public class PriceSerializer implements InterfaceSerializer<Price>{
     private static final String CSV_SEPARATOR = ",";
 
+    
+    /** 
+     * write price to csv
+     * @param p
+     */
     @Override
     public void writeToCSV(Price p)
     {
@@ -14,6 +19,8 @@ public class PriceSerializer implements InterfaceSerializer<Price>{
         {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("database/priceData.csv", true)));
             StringBuffer oneLine = new StringBuffer();
+            oneLine.append(p.getMovieType());
+            oneLine.append(CSV_SEPARATOR);
             oneLine.append(p.getCat());
             oneLine.append(CSV_SEPARATOR);
             oneLine.append(p.getPrice());
@@ -26,6 +33,11 @@ public class PriceSerializer implements InterfaceSerializer<Price>{
         catch (FileNotFoundException e){System.out.printf("'%s' %n", "File Not Found"); }
         catch (IOException e){e.printStackTrace();}
     }
+    
+    /** 
+     * read price from csv
+     * @return ArrayList<Price>
+     */
     @Override
     public ArrayList<Price> readFromCSV()
     {
@@ -38,9 +50,10 @@ public class PriceSerializer implements InterfaceSerializer<Price>{
             String[] tempArr;
             while((line = br.readLine()) != null) {
                tempArr = line.split(CSV_SEPARATOR);
-               String cat = tempArr[0];
-               double price = Double.valueOf(tempArr[1]);
-               Price p = new Price(cat,price);
+               String movieType = tempArr[0];
+               String cat = tempArr[1];
+               double price = Double.valueOf(tempArr[2]);
+               Price p = new Price(movieType,cat,price);
                pList.add(p);
                
             }
@@ -52,12 +65,19 @@ public class PriceSerializer implements InterfaceSerializer<Price>{
         }
         return null;
     }
+    
+    /** 
+     * overwrite price csv
+     * @param pList
+     */
     @Override
     public void overwriteCSV(ArrayList<Price> pList) {
 		try {
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("database/priceData.csv",false)));
 			for(Price p:pList) {
 				StringBuffer oneLine = new StringBuffer();
+                oneLine.append(p.getMovieType());
+				oneLine.append(CSV_SEPARATOR);
                 oneLine.append(p.getCat());
 				oneLine.append(CSV_SEPARATOR);
                 oneLine.append(p.getPrice());
@@ -72,13 +92,18 @@ public class PriceSerializer implements InterfaceSerializer<Price>{
         catch (IOException e){e.printStackTrace();}
 	
     }
+    
+    /** 
+     * update price in csv
+     * @param m
+     */
     @Override
     public void updateFromCSV(Price m) {
         PriceSerializer p = new PriceSerializer();
 	    ArrayList<Price> pList = p.readFromCSV();
 	    int flag =0;
 	    for (Price pp:pList) {
-		    if (pp.getCat().equals(m.getCat())) {
+		    if (pp.getCat().equals(m.getCat()) && pp.getMovieType().equals(m.getMovieType())) {
                 pp.setPrice(m.getPrice());
 		    	flag=1;
 		    	break;
@@ -90,6 +115,11 @@ public class PriceSerializer implements InterfaceSerializer<Price>{
 	    } else System.out.println(m.getCat() + " price update unsuccesful!");
     }
 
+    
+    /** 
+     * delete price from csv
+     * @param o
+     */
     @Override
     public void deleteFromCSV(Price o) {
         PriceSerializer p = new PriceSerializer();
@@ -97,7 +127,7 @@ public class PriceSerializer implements InterfaceSerializer<Price>{
 	    int flag =0;
         int index = 0;
 	    for (Price pp:pList) {
-		    if (pp.getCat().equals(o.getCat())) {
+		    if (pp.getCat().equals(o.getCat()) && pp.getMovieType().equals(o.getMovieType())) {
                 pp.setPrice(o.getPrice());
 		    	flag=1;
 		    	break;

@@ -25,6 +25,11 @@ public class BookingHistManager {
         this.movieGoerID = movieGoerID;
     }
 
+    
+    /** 
+     * show booking history
+     * @param movieGoerID
+     */
     public void showBookingHistory(int movieGoerID){
         String tid = "";
         for (MovieGoer mg: mgs.readFromCSV()) {
@@ -64,6 +69,11 @@ public class BookingHistManager {
     }
 
 
+    
+    /** 
+     * input review and rating
+     * @param movieGoerID
+     */
     public void inputReviewAndRating(int movieGoerID){
         int maxx = 0;
         for (Review r: rr.readFromCSV()) {

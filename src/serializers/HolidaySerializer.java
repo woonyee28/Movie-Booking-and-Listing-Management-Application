@@ -8,6 +8,11 @@ import models.Holiday;
 public class HolidaySerializer implements InterfaceSerializer<Holiday>{
     private static final String CSV_SEPARATOR = ",";
 
+    
+    /** 
+     * write holiday to csv
+     * @param holiday
+     */
     @Override
     public void writeToCSV(Holiday holiday)
     {
@@ -28,6 +33,11 @@ public class HolidaySerializer implements InterfaceSerializer<Holiday>{
         catch (FileNotFoundException e){System.out.printf("'%s' %n", "File Not Found"); }
         catch (IOException e){e.printStackTrace();}
     }
+    
+    /** 
+     * read holidays from csv
+     * @return ArrayList<Holiday>
+     */
     @Override
     public ArrayList<Holiday> readFromCSV()
     {
@@ -53,6 +63,11 @@ public class HolidaySerializer implements InterfaceSerializer<Holiday>{
         }
         return null;
     }
+    
+    /** 
+     * overwrite the holidat csv
+     * @param hList
+     */
     @Override
     public void overwriteCSV(ArrayList<Holiday> hList) {
         try {
@@ -73,6 +88,11 @@ public class HolidaySerializer implements InterfaceSerializer<Holiday>{
         catch (IOException e){e.printStackTrace();}
     }
 
+    
+    /** 
+     * update holiday in the csv
+     * @param m
+     */
     @Override
     public void updateFromCSV(Holiday m) {
         HolidaySerializer hs = new HolidaySerializer();
@@ -90,6 +110,11 @@ public class HolidaySerializer implements InterfaceSerializer<Holiday>{
         } else System.out.println("update of "+ m.getName() + " holiday unsuccessful!");
     }
 
+    
+    /** 
+     * delete the holiday in the csv
+     * @param m
+     */
     @Override
     public void deleteFromCSV(Holiday m) {
         HolidaySerializer hs = new HolidaySerializer();

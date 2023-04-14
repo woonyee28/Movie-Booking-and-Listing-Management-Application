@@ -9,6 +9,11 @@ public class StaffSerializer implements InterfaceSerializer<Staff>{
 
     private static final String CSV_SEPARATOR = ",";
     
+    
+    /** 
+     * write to staff csv
+     * @param admin
+     */
     @Override
     public void writeToCSV(Staff admin)
     {
@@ -33,6 +38,11 @@ public class StaffSerializer implements InterfaceSerializer<Staff>{
         catch (IOException e){e.printStackTrace();}
     }
 
+    
+    /** 
+     * read staffs from csv
+     * @return ArrayList<Staff>
+     */
     @Override
     public ArrayList<Staff> readFromCSV()
     {
@@ -62,6 +72,10 @@ public class StaffSerializer implements InterfaceSerializer<Staff>{
         return null;
     }
 
+    
+    /** overwrite staff csv
+     * @param aList
+     */
     @Override
     public void overwriteCSV(ArrayList<Staff> aList) {
 		try {
@@ -87,6 +101,11 @@ public class StaffSerializer implements InterfaceSerializer<Staff>{
 	
     }
 
+    
+    /** 
+     * update staff in csv
+     * @param o
+     */
     @Override
     public void updateFromCSV(Staff o) {
         StaffSerializer ss = new StaffSerializer();
@@ -106,6 +125,11 @@ public class StaffSerializer implements InterfaceSerializer<Staff>{
 	    } else System.out.println("Admin account: name = " +o.getName()+" id = "+ o.getStaffID()+" update unsuccessful!");
     }
 
+    
+    /** 
+     * delete staff from csv
+     * @param o
+     */
     @Override
     public void deleteFromCSV(Staff o) {
         StaffSerializer ss = new StaffSerializer();

@@ -6,17 +6,27 @@ import managers.AdminManager;
 
 
 public class UIAdminSignUp {
+    /**
+     * The adminID of this UIAdminSignUp.
+     */
     private int adminID;
-
+    /**
+     * Creates a new UIAdminSignUP with the given adminID.
+     * @param adminID This UIAdminSignUp's adminID.
+     */
     public UIAdminSignUp(int adminID){
         this.adminID = adminID;
     }
-
+    /**
+     * The menuOptions of this UIAdminSignUp.
+     */
     private final String menuOptions[] = {
         "Create New Admin",
         "Exit Admin Signup"
     };
-
+    /**
+     * Runs the UIAdminSIgnUp.
+     */
     public void run(){
         int i,choice = -1;
         Scanner sc = new Scanner(System.in);

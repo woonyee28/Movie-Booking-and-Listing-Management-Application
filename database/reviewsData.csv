@@ -1,4 +1,11 @@
-0,0,4.9,Nice changed movie!,0
-1,0,5.0,horror!,3
-2,0,3.0,feew,3
-3,0,4.8,Nice horror movie,3
+0,0,4.9,Nice movie!,0
+1,1,5.0,horror!,1
+2,2,3.0,feew,2
+3,3,4.8,Nice horror movie,3
+4,4,5.0,Excellent!,4
+5,5,4.7,Amazing!,5
+6,0,4.9,Woahhh!,6
+7,6,5.0,very nice movie,0
+8,7,4.9,very nice,0
+9,8,4.9,nice,3
+10,0,1.0,bad review,6

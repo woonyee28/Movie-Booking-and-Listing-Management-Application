@@ -7,6 +7,11 @@ import models.Sessions;
 
 public class SessionSerializer implements InterfaceSerializer<Sessions>{
     private static final String CSV_SEPARATOR = ",";
+    
+    /** 
+     * write session to csv
+     * @param session
+     */
     @Override
     public void writeToCSV(Sessions session)
     {
@@ -33,6 +38,11 @@ public class SessionSerializer implements InterfaceSerializer<Sessions>{
         catch (FileNotFoundException e){System.out.printf("'%s' %n", "File Not Found"); }
         catch (IOException e){e.printStackTrace();}
     }
+    
+    /** 
+     * read sessions from csv
+     * @return ArrayList<Sessions>
+     */
     @Override
     public ArrayList<Sessions> readFromCSV()
     {
@@ -66,6 +76,11 @@ public class SessionSerializer implements InterfaceSerializer<Sessions>{
         }
         return null;
     }
+    
+    /** 
+     * overwrite session csv
+     * @param aList
+     */
     @Override
     public void overwriteCSV(ArrayList<Sessions> aList) {
 		try {
@@ -95,6 +110,11 @@ public class SessionSerializer implements InterfaceSerializer<Sessions>{
 	
     }
 
+    
+    /** 
+     * update session in csv
+     * @param s
+     */
     @Override
     public  void updateFromCSV(Sessions s) {
         SessionSerializer ss = new SessionSerializer();
@@ -114,6 +134,11 @@ public class SessionSerializer implements InterfaceSerializer<Sessions>{
         else System.out.println("Sessions record, date = "+s.getSessionDate()+" time = " + s.getSessionTime()+" update unsuccessful!");
     }
 
+    
+    /** 
+     * delete session from csv
+     * @param s
+     */
     @Override
     public void deleteFromCSV(Sessions s) {
         SessionSerializer ss = new SessionSerializer();

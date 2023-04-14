@@ -8,6 +8,11 @@ import models.Transaction;
 public class TransactionSerializer implements InterfaceSerializer<Transaction>{
     private static final String CSV_SEPARATOR = ",";
 
+    
+    /** 
+     * write transaction to csv
+     * @param transaction
+     */
     @Override
     public void writeToCSV(Transaction transaction)
     {
@@ -40,6 +45,11 @@ public class TransactionSerializer implements InterfaceSerializer<Transaction>{
         catch (FileNotFoundException e){System.out.printf("'%s' %n", "File Not Found"); }
         catch (IOException e){e.printStackTrace();}
     }
+    
+    /** 
+     * read transaction from csv
+     * @return ArrayList<Transaction>
+     */
     @Override
     public ArrayList<Transaction> readFromCSV()
     {
@@ -72,6 +82,11 @@ public class TransactionSerializer implements InterfaceSerializer<Transaction>{
         return null;
     }
 
+    
+    /**
+     * overwrite transaction csv
+     * @param aList
+     */
     @Override
     public void overwriteCSV(ArrayList<Transaction> aList) {
 		try {
@@ -106,6 +121,11 @@ public class TransactionSerializer implements InterfaceSerializer<Transaction>{
 	
     }
 
+    
+    /** 
+     * update transaction in csv
+     * @param t
+     */
     @Override
     public void updateFromCSV(Transaction t ) {
 	    TransactionSerializer ts = new TransactionSerializer();
@@ -130,6 +150,11 @@ public class TransactionSerializer implements InterfaceSerializer<Transaction>{
         }
         else System.out.println("Transaction record, id = "+ t.getTID()+" update unsuccessful!");
     }
+    
+    /** 
+     * delete transaction in csv
+     * @param t
+     */
     @Override
     public void deleteFromCSV(Transaction t) {
 	    TransactionSerializer ts = new TransactionSerializer();
@@ -148,7 +173,5 @@ public class TransactionSerializer implements InterfaceSerializer<Transaction>{
             System.out.println("Transaction record, id = "+ t.getTID()+" successfully deleted!");
         }
         else System.out.println("Transaction record, id = "+ t.getTID()+" deletion unsuccessful!");
-
-	
     }
 }

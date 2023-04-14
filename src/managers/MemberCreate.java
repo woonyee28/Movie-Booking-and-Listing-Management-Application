@@ -12,6 +12,13 @@ public class MemberCreate implements logIn {
         this.mList= mgs.readFromCSV();
     }
 
+    
+    /** 
+     * check if passwords matched
+     * @param email
+     * @param hashedPassword
+     * @return boolean
+     */
     @Override
     public boolean checkPassword(String email, String hashedPassword) {
         boolean correct = false;
@@ -25,6 +32,12 @@ public class MemberCreate implements logIn {
 		return correct;
     }
 
+    
+    /** 
+     * check if email exists
+     * @param email
+     * @return boolean
+     */
     @Override
     public boolean checkExistenceEmail(String email) {
         boolean exists =false;
@@ -38,6 +51,11 @@ public class MemberCreate implements logIn {
     }
 
 
+    
+    /** 
+     * check if id exists
+     * @return int
+     */
     public int checkExistenceID(){
         int largest = 0;
 		for (MovieGoer m:this.mList) {
@@ -49,6 +67,11 @@ public class MemberCreate implements logIn {
 
     }
 
+    
+    /** 
+     * run member create
+     * @return int
+     */
     public int run(){
         MemberCreate create = new MemberCreate();
         int movieGoerID = 0;
@@ -68,8 +91,16 @@ public class MemberCreate implements logIn {
             movieGoerID = checkExistenceID() + 1;
             System.out.println("Please enter your name:");
             name = input1.nextLine();
-            System.out.println("Please enter your age:");
-            age = input1.nextInt();
+            age = -1;
+            while (age!=-1){
+                System.out.println("Please enter your age:");
+                int test = input1.nextInt();
+                if (test<=12||test>=99){
+                    System.out.println("Please enter a valid age. (12-99)");
+                }else{
+                    age = test;
+                }
+            }
             System.out.println("Please enter your mobile number:");
             mobile = input1.nextInt();
 
@@ -77,6 +108,7 @@ public class MemberCreate implements logIn {
             System.out.println("Please enter your password:");
             password = input2.nextLine();
             ;
+            
             
             passwordHashed = String.valueOf(password.hashCode());
 

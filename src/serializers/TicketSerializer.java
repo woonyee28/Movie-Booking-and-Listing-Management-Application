@@ -8,6 +8,11 @@ public class TicketSerializer implements InterfaceSerializer<Ticket> {
     private static final String CSV_SEPARATOR = ",";
 
     
+    
+    /** 
+     * write ticket to csv
+     * @param t
+     */
     @Override
     public void writeToCSV(Ticket t)
     {
@@ -36,6 +41,11 @@ public class TicketSerializer implements InterfaceSerializer<Ticket> {
         catch (IOException e){e.printStackTrace();}
     }
 
+    
+    /** 
+     * read tickets from csv
+     * @return ArrayList<Ticket>
+     */
     @Override
     public ArrayList<Ticket> readFromCSV()
     {
@@ -67,6 +77,11 @@ public class TicketSerializer implements InterfaceSerializer<Ticket> {
         return null;
     }
 
+    
+    /** 
+     * overwrite ticket csv
+     * @param tList
+     */
     @Override
     public void overwriteCSV(ArrayList<Ticket> tList) {
 		try {
@@ -96,6 +111,11 @@ public class TicketSerializer implements InterfaceSerializer<Ticket> {
 	
     }
 
+    
+    /** 
+     * update ticket in csv
+     * @param o
+     */
     @Override
     public void updateFromCSV(Ticket o) {
         TicketSerializer tt = new TicketSerializer();
@@ -118,6 +138,11 @@ public class TicketSerializer implements InterfaceSerializer<Ticket> {
 	    } else System.out.println("Ticket: "+ o.getMovieType()+ " "+ o.getCineplexCode()+" " + o.getAgeCat()+ " "+ o.getDayType() + " "+ o.getAfterSix() + o.getPrice() +" price update unsuccesful!");
     }
 
+    
+    /** 
+     * delete ticket from csv
+     * @param o
+     */
     @Override
     public void deleteFromCSV(Ticket o) {
         TicketSerializer tt = new TicketSerializer();

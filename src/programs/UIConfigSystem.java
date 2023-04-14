@@ -5,13 +5,20 @@ import java.util.Scanner;
 import managers.SettingsManager;
 
 public class UIConfigSystem {
-
+    /**
+     * The adminID of this UIConfigSystem.
+     */
     private int adminID;
-
+    /**
+     * Creates a new UIConfigSystem with given adminID.
+     * @param adminID This UIConfigSystem's adminID.
+     */
     public UIConfigSystem(int adminID){
         this.adminID = adminID;
     }
-    
+    /**
+     * THe menuOptions of this UIConfigSystem.
+     */
     private final String menuOptions[] = {
         "Print Holiday List",
         "Add New Holiday",
@@ -21,7 +28,9 @@ public class UIConfigSystem {
         "Edit Prices",
         "Exit System Config"
     };
-
+    /**
+     * Runs UIConfigSystem.
+     */
     public void run(){
         int i,choice = -1;
         Scanner sc = new Scanner(System.in);

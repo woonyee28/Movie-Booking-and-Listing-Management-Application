@@ -1,16 +1,18 @@
 package programs;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
-import managers.AmendBooking;
+import managers.AmendBookingManager;
+
 
 public class AdminApp {
 
 	private int adminID;
-
+	
 	private final String menuOptions[] = {
         "Amend Booking",
-        "Show Movie Listing",
+        "Show Movie Listing and Book Ticket",
         "Show Sales Report",
         "Create New Movie/Session Listing",
 		"Configure System Settings",
@@ -18,17 +20,28 @@ public class AdminApp {
 		"Manage Admins",
 		"Exit Admin App"
 	};
-
+	/**
+	 * Creates an AdminApp with the given adminID.
+	 * @param adminID This AdminApp's adminID.
+	 */
 	public AdminApp(int adminID){
 		this.adminID=adminID;
 	}
 
+	
+	/** 
+	 * get admin id
+	 * @return int
+	 */
 	public int getAdminID(){
 		return this.adminID;
 	}
 
-
-    public void run(){
+	/**
+	 * Runs the AdminApp.
+	 * @throws ParseException
+	 */
+    public void run() throws ParseException{
         int i,choice = -1;
         Scanner sc = new Scanner(System.in);
 
@@ -43,11 +56,13 @@ public class AdminApp {
             switch (choice) {
 				case 1:
                     // Amend Booking, UIAmendBooking
-					AmendBooking m = new AmendBooking(adminID,1);
+					UIAmendBooking m = new UIAmendBooking(adminID,1);
 					m.run();
 					break;
 				case 2:
 					// Show movie listing + Book ticket, UIListingAndBooking
+					UIListingAndBooking a = new UIListingAndBooking(adminID, 1);
+					a.run();
 					// Zheng Kai
 					break;
 				case 3:
@@ -69,6 +84,7 @@ public class AdminApp {
 					// sign up admin, UIAdminSignUp
 					UIAdminSignUp adminSignUp = new UIAdminSignUp(this.adminID);
 					adminSignUp.run();
+					break;
                 case 7:
 					// manage admin, UIManageAdmin
 					UIManageAdmin manageAdmin = new UIManageAdmin(this.adminID);

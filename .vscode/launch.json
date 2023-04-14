@@ -6,6 +6,69 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch MoblimaMainApp",
+            "request": "launch",
+            "mainClass": "programs.MoblimaMainApp",
+            "projectName": "sc2002-project_bad1ba49"
+        },
+        {
+            "type": "java",
+            "name": "Launch testBookEOS",
+            "request": "launch",
+            "mainClass": "tests.testBookEOS",
+            "projectName": "sc2002-project_24a72851"
+        },
+        {
+            "type": "java",
+            "name": "Launch testEOS",
+            "request": "launch",
+            "mainClass": "tests.testEOS",
+            "projectName": "sc2002-project_7982b241"
+        },
+        {
+            "type": "java",
+            "name": "Launch testHolPriceConfig",
+            "request": "launch",
+            "mainClass": "tests.testHolPriceConfig",
+            "projectName": "sc2002-project_7982b241"
+        },
+        {
+            "type": "java",
+            "name": "Launch MoblimaMainApp",
+            "request": "launch",
+            "mainClass": "programs.MoblimaMainApp",
+            "projectName": "sc2002-project_7982b241"
+        },
+        {
+            "type": "java",
+            "name": "Launch MoblimaMainApp",
+            "request": "launch",
+            "mainClass": "programs.MoblimaMainApp",
+            "projectName": "sc2002-project_985b3ca0"
+        },
+        {
+            "type": "java",
+            "name": "Launch MoblimaMainApp",
+            "request": "launch",
+            "mainClass": "programs.MoblimaMainApp",
+            "projectName": "sc2002-project_69ac6e3e"
+        },
+        {
+            "type": "java",
+            "name": "Launch Display_movie",
+            "request": "launch",
+            "mainClass": "tests.Display_movie",
+            "projectName": "sc2002-project_985b3ca0"
+        },
+        {
+            "type": "java",
+            "name": "Launch Moviebooking",
+            "request": "launch",
+            "mainClass": "tests.Moviebooking",
+            "projectName": "sc2002-project_15e1bfac"
+        },
+        {
+            "type": "java",
             "name": "Launch testSession",
             "request": "launch",
             "mainClass": "tests.testSession",

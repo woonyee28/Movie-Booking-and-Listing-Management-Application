@@ -8,6 +8,10 @@ import models.Cineplexes;
 public class CineplexSerializer implements InterfaceSerializer<Cineplexes>{
     private static final String CSV_SEPARATOR = ",";
 
+    
+    /** write cineplex to csv
+     * @param cineplexes
+     */
     @Override
     public void writeToCSV(Cineplexes cineplexes)
     {
@@ -33,6 +37,11 @@ public class CineplexSerializer implements InterfaceSerializer<Cineplexes>{
         catch (IOException e){e.printStackTrace();}
     }
 
+    
+    /** 
+     * read cineplex from csv
+     * @return ArrayList<Cineplexes>
+     */
     @Override
     public ArrayList<Cineplexes> readFromCSV()
     {
@@ -65,6 +74,11 @@ public class CineplexSerializer implements InterfaceSerializer<Cineplexes>{
         }
         return null;
     }  
+    
+    /** 
+     * overwrite the cineplex csv
+     * @param aList
+     */
     @Override
     public void overwriteCSV(ArrayList<Cineplexes> aList) {
 		try {
@@ -90,6 +104,11 @@ public class CineplexSerializer implements InterfaceSerializer<Cineplexes>{
         catch (IOException e){e.printStackTrace();}
 	
     }
+    
+    /** 
+     * update the cineplex in csv
+     * @param m
+     */
     @Override
     public void updateFromCSV(Cineplexes m) {
         CineplexSerializer cp = new CineplexSerializer();
@@ -109,6 +128,11 @@ public class CineplexSerializer implements InterfaceSerializer<Cineplexes>{
         }
         else System.out.println("Cineplexes record, code = "+m.getCineplexCode()+" update unsuccessful!");
     }
+    
+    /** 
+     * delete the cineplex in the csv
+     * @param m
+     */
     @Override
     public void deleteFromCSV(Cineplexes m) {
         CineplexSerializer cp = new CineplexSerializer();
